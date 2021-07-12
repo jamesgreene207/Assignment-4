@@ -9,6 +9,7 @@ li {
 }
 
 a {
+    text-align: center;
     font-size: 18px;
 }
 
@@ -19,9 +20,13 @@ p {
 img {
     width: 650px;
     height: 400px;
+    padding-right: 120px;
+    padding-bottom: 10px;
+    padding-left: 120px;
 }
 
 #italic {
+    text-align: center;
     font-style: italic;
 }
 
