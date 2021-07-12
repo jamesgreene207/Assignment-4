@@ -1,0 +1,38 @@
+﻿body {
+    text-align: left;
+    background-color: deepskyblue !important;
+}
+
+li {
+    text-align: left;
+    font-size: 20px;
+}
+
+a {
+    font-size: 18px;
+}
+
+p {
+    font-size: 22px;
+}
+
+img {
+    width: 650px;
+    height: 400px;
+}
+
+#italic {
+    font-style: italic;
+}
+
+article {
+    font-size: 25px;
+}
+
+.no-more {
+    margin-left: 20px;
+}
+
+.more-more {
+    margin-left: 40px;
+}
