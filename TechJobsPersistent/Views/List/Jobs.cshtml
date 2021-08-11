@@ -1,23 +1,47 @@
-﻿<div class="container body-content">
+﻿@model TechJobsPersistent.ViewModels.JobDetailViewModel
+@*<div class="container body-content">*@
 
-    <h1>@ViewBag.title</h1>
+<h1>@ViewBag.title</h1>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Employer</th>
-            <th>Skills</th>
-        </tr>
-        @foreach (var job in ViewBag.jobs)
-        {
+@*<table>
             <tr>
-                <td>@job.JobId</td>
-                <td>@job.Name</td>
-                <td>@job.EmployerName</td>
-                <td>@job.SkillText</td>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Employer</th>
+                <th>Skills</th>
             </tr>
-        }
-    </table>
+            @foreach (var job in ViewBag.jobs)
+            {
+                <tr>
+                    <td>@job.JobId</td>
+                    <td>@job.Name</td>
+                    <td>@job.EmployerName</td>
+                    <td>@job.SkillText</td>
+                </tr>
+            }
+        </table>
 
-</div>
+    </div>*@
+
+@foreach (var job in ViewBag.jobs)
+{
+    <table class="job-listing">
+        <tr>
+            <td>Id: </td>
+            <td>@job.JobId</td>
+        </tr>
+        <tr>
+            <td>Name: </td>
+            <td> @job.Name</td>
+        </tr>
+        <tr>
+            <td>Employer: </td>
+            <td>@job.EmployerName</td>
+        </tr>
+        <tr>
+            <td>Skills: </td>
+            <td>@job.SkillText</td>
+        </tr>
+
+    </table>
+}

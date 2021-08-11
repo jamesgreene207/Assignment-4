@@ -15,38 +15,61 @@ namespace TechJobsPersistent.Controllers
 {
     public class HomeController : Controller
     {
-        private JobDbContext context;
+        private JobDbContext _context;
 
         public HomeController(JobDbContext dbContext)
         {
-            context = dbContext;
+            _context = dbContext;
         }
 
         public IActionResult Index()
         {
-            List<Job> jobs = context.Jobs.Include(j => j.Employer).ToList();
+            List<Job> jobs = _context.Jobs.Include(j => j.Employer).ToList();
 
             return View(jobs);
         }
 
-        [HttpGet("/Add")]
+        [HttpGet]
         public IActionResult AddJob()
         {
-            return View();
+            List<Skill> skills = _context.Skills.ToList();
+            List<Employer> employers = _context.Employers.ToList();
+            AddJobViewModel addJobViewModel = new AddJobViewModel(employers, skills);
+
+
+            return View(addJobViewModel);
         }
 
-        public IActionResult ProcessAddJobForm()
-        {
-            return View();
+        [HttpPost]
+        public IActionResult AddJob(AddJobViewModel addJobViewModel, Skill[] selectedSkills)
+        {           
+
+            if (ModelState.IsValid)
+            {
+                Employer theEmployer = _context.Employers.Find(addJobViewModel.EmployerId);
+                Job newJob = new Job(addJobViewModel.Name, theEmployer);
+                foreach(var skill in selectedSkills)
+                {
+                    JobSkill jobSkill = new JobSkill(newJob, skill);
+                    _context.JobSkills.Add(jobSkill);
+                }
+                    
+                _context.Jobs.Add(newJob);
+                _context.SaveChanges();
+
+                return Redirect("/List");
+             
+            }
+            return View(addJobViewModel);
         }
 
         public IActionResult Detail(int id)
         {
-            Job theJob = context.Jobs
+            Job theJob = _context.Jobs
                 .Include(j => j.Employer)
                 .Single(j => j.Id == id);
 
-            List<JobSkill> jobSkills = context.JobSkills
+            List<JobSkill> jobSkills = _context.JobSkills
                 .Where(js => js.JobId == id)
                 .Include(js => js.Skill)
                 .ToList();

@@ -1,6 +1,16 @@
-﻿<h1>Employer: Name</h1>
+﻿@using TechJobsPersistent.Models
+@model Employer
 
-<div>
-    <p>Name: name</p>
-    <p>Location: location</p>
-</div>
+<h1>@Model.Name</h1>
+
+<table class="table">
+    <tr>
+        <th>Employer</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td>@Model.Location</td>
+    </tr>
+
+</table>

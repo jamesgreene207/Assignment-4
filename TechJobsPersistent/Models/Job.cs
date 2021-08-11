@@ -19,9 +19,11 @@ namespace TechJobsPersistent.Models
         {
         }
 
-        public Job(string name)
+        public Job(string name, Employer employer)
         {
             Name = name;
+            Employer = employer;
+            
         }
     }
 }

@@ -1,13 +1,1 @@
-﻿<h1>Add New Employer</h1>
-
-<form asp-controller="Employer" asp-action="ProcessAddEmployerForm" method="post">
-    <div class="form-group">
-        <label>Employer Name</label>
-        <input />
-    </div>
-    <div class="form-group">
-        <label>Employer Location</label>
-        <input />
-    </div>
-    <input type="submit" value="Submit" />
-</form>
+﻿@using TechJobsPersistent.ViewModels@model AddEmployerViewModel;<h1>Add New Employer</h1><div class="text-center">        <a asp-controller="Home" asp-action="AddJob">Add Jobs</a> &nbsp    <a asp-controller="List" asp-action="Index">| List Jobs</a> &nbsp    <a asp-controller="Search" asp-action="Index">| Search Jobs</a> &nbsp    <br><a asp-controller="Employer" asp-action="Index">List Employers</a> &nbsp    <a asp-controller="Employer" asp-action="Add">| Add Employers</a> &nbsp</div><form asp-controller="Employer" asp-action="Add" method="post">    <div class="form-group">        <label asp-for="Name">Employer Name</label>        <input asp-for="Name" />        <span asp-validation-for="Name"></span>    </div>    <div class="form-group">        <label asp-for="Location">Employer Location</label>        <input asp-for="Location" />        <span asp-validation-for="Location"></span>    </div>    <input type="submit" value="Submit" /></form>
